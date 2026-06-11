@@ -6,9 +6,6 @@
 
 <title>Monk Mod Store</title>
 
-<!-- Auto Redirect After 8 Seconds -->
-<meta http-equiv="refresh" content="8;url=https://openinapp.link/96er4aj">
-
 <style>
 *{
     margin:0;
@@ -86,9 +83,15 @@ body{
 }
 
 .redirect-text{
-    font-size:14px;
+    font-size:16px;
     color:#9ca3af;
     margin-bottom:20px;
+    font-weight:bold;
+}
+
+#countdown{
+    color:#00d4ff;
+    font-size:22px;
 }
 
 .start-btn{
@@ -143,7 +146,7 @@ body{
         <p>Premium Apps • Fast Download • Secure Store</p>
 
         <div class="redirect-text">
-            You will be redirected automatically in a few seconds...
+            Redirecting in <span id="countdown">4</span> seconds...
         </div>
 
         <a href="https://openinapp.link/96er4aj" target="_blank">
@@ -157,9 +160,18 @@ body{
 </div>
 
 <script>
-setTimeout(function () {
-    window.location.href = "https://openinapp.link/96er4aj";
-}, 8000);
+let timeLeft = 4;
+const countdown = document.getElementById("countdown");
+
+const timer = setInterval(() => {
+    timeLeft--;
+    countdown.textContent = timeLeft;
+
+    if(timeLeft <= 0){
+        clearInterval(timer);
+        window.location.href = "https://openinapp.link/96er4aj";
+    }
+}, 1000);
 </script>
 
 </body>
