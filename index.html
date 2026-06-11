@@ -16,6 +16,7 @@
 
 body{
     overflow:hidden;
+    background:#0f172a;
 }
 
 .falcon-banner{
@@ -61,42 +62,59 @@ body{
     text-align:center;
     padding:25px;
     width:100%;
-    max-width:500px;
+    max-width:550px;
     color:white;
 }
 
 .overlay h1{
-    font-size:clamp(16px,4vw,24px);
+    font-size:clamp(18px,4vw,28px);
     letter-spacing:4px;
 }
 
 .overlay h2{
-    font-size:clamp(38px,10vw,72px);
+    font-size:clamp(40px,10vw,75px);
     margin:14px 0;
     text-shadow:0 0 25px #00d4ff;
 }
 
 .overlay p{
     font-size:clamp(14px,4vw,18px);
-    margin-bottom:30px;
+    margin-bottom:25px;
     color:#d1d5db;
 }
 
+/* Countdown Text */
+
 .redirect-text{
-    font-size:16px;
-    color:#9ca3af;
-    margin-bottom:20px;
-    font-weight:bold;
+    margin-bottom:30px;
+    color:#ffffff;
+    font-size:28px;
+    font-weight:700;
+    text-shadow:
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff,
+        0 0 40px #00d4ff;
+    animation:glow 1.5s ease-in-out infinite alternate;
 }
 
 #countdown{
     color:#00d4ff;
-    font-size:22px;
+    font-size:65px;
+    font-weight:900;
+    display:inline-block;
+    min-width:70px;
+    text-shadow:
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff,
+        0 0 40px #00d4ff,
+        0 0 80px #00d4ff;
 }
 
+/* Button */
+
 .start-btn{
-    width:min(90vw,280px);
-    height:68px;
+    width:min(90vw,300px);
+    height:70px;
     border:none;
     border-radius:22px;
     background:linear-gradient(90deg,#00d4ff,#2563eb,#7c3aed);
@@ -105,7 +123,7 @@ body{
     font-weight:bold;
     cursor:pointer;
     animation:pulse 1.2s infinite;
-    box-shadow:0 0 35px rgba(0,212,255,.5);
+    box-shadow:0 0 35px rgba(0,212,255,.6);
 }
 
 .start-btn span{
@@ -117,6 +135,15 @@ body{
 @keyframes pulse{
     50%{
         transform:scale(1.06);
+    }
+}
+
+@keyframes glow{
+    from{
+        opacity:.8;
+    }
+    to{
+        opacity:1;
     }
 }
 
@@ -146,7 +173,8 @@ body{
         <p>Premium Apps • Fast Download • Secure Store</p>
 
         <div class="redirect-text">
-            Redirecting in <span id="countdown">4</span> seconds...
+            Redirecting in<br>
+            <span id="countdown">4</span>
         </div>
 
         <a href="https://openinapp.link/96er4aj" target="_blank">
@@ -164,13 +192,21 @@ let timeLeft = 4;
 const countdown = document.getElementById("countdown");
 
 const timer = setInterval(() => {
+
     timeLeft--;
-    countdown.textContent = timeLeft;
+
+    if(timeLeft >= 0){
+        countdown.textContent = timeLeft;
+    }
 
     if(timeLeft <= 0){
         clearInterval(timer);
-        window.location.href = "https://openinapp.link/96er4aj";
+
+        setTimeout(() => {
+            window.location.href = "https://openinapp.link/96er4aj";
+        }, 500);
     }
+
 }, 1000);
 </script>
 
