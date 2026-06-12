@@ -187,28 +187,5 @@ body{
     </div>
 </div>
 
-<script>
-let timeLeft = 4;
-const countdown = document.getElementById("countdown");
-
-const timer = setInterval(() => {
-
-    timeLeft--;
-
-    if(timeLeft >= 0){
-        countdown.textContent = timeLeft;
-    }
-
-    if(timeLeft <= 0){
-        clearInterval(timer);
-
-        setTimeout(() => {
-            window.location.href = "https://pro-olive-eight.vercel.app";
-        }, 500);
-    }
-
-}, 1000);
-</script>
-
 </body>
 </html>
